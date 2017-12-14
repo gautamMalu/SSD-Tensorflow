@@ -80,7 +80,9 @@ def _process_image(directory, name):
     """
     # Read the image file.
     filename = directory + DIRECTORY_IMAGES + name + '.jpg'
-    image_data = tf.gfile.FastGFile(filename, 'r').read()
+    with open(filename,'rb') as f:
+        image_data = f.read()
+    #image_data = tf.gfile.FastGFile(filename, 'r').read()
 
     # Read the XML annotation file.
     filename = os.path.join(directory, DIRECTORY_ANNOTATIONS, name + '.xml')
